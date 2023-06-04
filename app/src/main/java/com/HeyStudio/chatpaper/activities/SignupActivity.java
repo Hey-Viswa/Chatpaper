@@ -1,14 +1,17 @@
 package com.HeyStudio.chatpaper.activities;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.HeyStudio.chatpaper.databinding.ActivitySignupBinding;
 
-import java.util.regex.Pattern;
+import java.io.ByteArrayOutputStream;
 
 public class SignupActivity extends AppCompatActivity {
     private ActivitySignupBinding binding;
@@ -21,7 +24,13 @@ public class SignupActivity extends AppCompatActivity {
        setListener();
     }
     private void setListener() {
-    binding.textSignIn.setOnClickListener(v -> onBackPressed());
+
+        binding.textSignIn.setOnClickListener(v -> onBackPressed());
+        binding.buttonSignUp.setOnClickListener(v -> {
+            if(isValidSignUpDetails()){
+                signUp();
+            }
+        });
     }
 
     private void showToast(String message) {
@@ -29,6 +38,16 @@ public class SignupActivity extends AppCompatActivity {
     }
     private void signUp() {
 
+    }
+    private String encodeImage(Bitmap bitmap) {
+        int previewWidth = 150;
+        int previewHeight = bitmap.getHeight() * previewWidth / bitmap.getWidth();
+        Bitmap previewBitmap = Bitmap.createScaledBitmap(bitmap, previewWidth, previewHeight,false);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+
+        return Base64.encodeToString(bytes,Base64.DEFAULT);
     }
     private Boolean isValidSignUpDetails() {
         if(encodedImage == null){
@@ -55,5 +74,14 @@ public class SignupActivity extends AppCompatActivity {
             return true;
         }
         return null;
+    }
+    private void loading(Boolean isLoading){
+        if(isLoading){
+            binding.buttonSignUp.setVisibility(View.INVISIBLE);
+            binding.ProgressBar.setVisibility(View.VISIBLE);
+        }else{
+            binding.ProgressBar.setVisibility(View.INVISIBLE);
+            binding.buttonSignUp.setVisibility(View.VISIBLE);
+        }
     }
 }
