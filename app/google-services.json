@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "337266349414",
+    "project_id": "chatpaper-66a90",
+    "storage_bucket": "chatpaper-66a90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337266349414:android:509949c6400d44840f24a7",
+        "android_client_info": {
+          "package_name": "com.HeyStudio.chatpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337266349414-bfej400m1lvs6pff90ep1ha229srlj1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrLJimSiZOfjZR9X9Xr2RDeEggkAZfb-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337266349414-bfej400m1lvs6pff90ep1ha229srlj1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
